@@ -46,6 +46,11 @@ app.post('/login', express.urlencoded({ extended: true }), (req, res) => {
   });
 });
 
+app.get("/todos", async (req, res) => {
+  const todos = await db.query("SELECT * FROM todos");
+  res.json(todos);
+});
+
 app.listen(3000, () => {
   console.log('サーバーがポート3000で稼働しています。');
 });
